@@ -1,6 +1,6 @@
 # Atomix
 
-A standalone Java version of the [KAtomic](https://games.kde.org/game.php?game=katomic) puzzle game ([another link](http://kp-atomix.googlecode.com/hg/index.html)). The game's objective is to reassemble a molecule from the given atoms by sliding them around.
+A standalone Java version of the [KAtomic](https://games.kde.org/game.php?game=katomic) 2D puzzle game ([another link](http://kp-atomix.googlecode.com/hg/index.html)). The game's objective is to reassemble a molecule from the given atoms by sliding them around.
 
 ### Features
 
