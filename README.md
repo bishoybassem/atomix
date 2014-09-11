@@ -4,7 +4,7 @@ A standalone Java version of the [KAtomic](https://games.kde.org/game.php?game=k
 
 ### Features
 
-* Used Java 2D API to render all of the game's graphics, thus scalling won't cause any quality loss.
+* Used Java 2D API to render all of the game's graphics, thus scaling won't cause any quality loss.
 * Added several kinds of sliding animations and effects.
 * Movements are tracked, along with undo and redo options.
 
