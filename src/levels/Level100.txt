@@ -1,0 +1,43 @@
+#######...
+#.#1#2###.
+#345.6.7#.
+#89ab#..##
+#4#c9d#.e#
+####6f9.##
+...##ghi2#
+....##jk##
+....#lmn.#
+....######
+
+m.g.4...
+.285.ji.
+.ec6.7n.
+9.l.1..4
+...9.2b.
+....3kah
+.....f6.
+....9..d
+
+1 c 1RU 1RD 1LD 1LU
+2 c 1D 1LU 2R
+3 h 1R
+4 h 1LD
+5 c 1L 1RU 2D
+6 c 1L 1RD 2U
+7 c 1U 1R 1RU 1LD
+8 c 1U 1R 2L
+9 h 1RU
+a c 1U 1R 2D
+b c 1D 1RU 2L
+c c 1R 1D 2L
+d cl 1LU
+e c 1U 1LD 2R
+f c 1R 1LD 2U
+g h 1D
+h h 1L
+i cl 1LD
+j cl 1D
+k c 1U 1L 2D
+l h 1U
+m cl 1RD
+n cl 1L

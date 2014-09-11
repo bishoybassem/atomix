@@ -1,0 +1,31 @@
+###########
+.##..3.a##.
+..#19c6b#..
+..#d.7.f#..
+..#ghe58#..
+.##2...4##.
+###########
+
+.3.a.
+148bf
+.5hc.
+269dg
+.7.e.
+
+1 cr 1R 1RD
+2 cr 1RU 1R
+3 cr 1RD 1D
+4 cr 1U 1RD 1L
+5 cr 1R 1LD 1LU
+6 cr 1RU 1D 1L
+7 cr 1U 1RU
+8 cr 1RU 1D 1LU
+9 cr 1U 1RD 1LD
+a cr 1D 1LD
+b cr 1U 1R 1LD
+c cr 1RU 1RD 1L
+d cr 1R 1D 1LU
+e cr 1U 1LU
+f cr 1LD 1L
+g cr 1L 1LU
+h cr 1U 1RU 1R 1RD 1D 1LD 1L 1LU

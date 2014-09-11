@@ -1,0 +1,108 @@
+Water
+Methane
+Methanol
+Ethylene
+Propene
+Ethanol
+Isopropanol
+Ethanal
+Acetone
+Formic acid
+Acetic acid
+trans-Butene
+cis-Butene
+Dimethylether
+Butanol
+Tert-butanol
+Glycerin
+Polytetrafluoroethylene
+Oxalic acid
+Formaldehyde
+Crystal 1
+Ethyl acetate
+Ammonia
+3-Methylpentane
+Propanal
+Propyne
+Furfural
+Pyran
+Cyclopentane
+Nitroglycerin
+Ethane
+Crystal 2
+Ethylene glycol
+Alanine
+Dicyandiamide
+Prussic acid
+Anthracene
+Thiazole
+Saccharin
+Styrene
+Melamine
+Cyclobutane
+Nicotine
+Acetylsalicylic acid
+Meta-dinitrobenzene
+Propyne
+Malonic acid
+Neopentane
+Ethylbenzene
+Asparagine
+Cyclooctatetraene
+Vanillin
+Crystal 3
+Uric acid
+Thymine
+Aniline
+Chloroform
+Carbonic acid
+Crystal 4
+Acrylonitrile
+Furan
+Lactic acid
+Maleic acid
+Tartaric acid
+Crystal 5
+Ethyl formate
+1,4-Cyclohexadiene
+Squaric acid
+Ascorbic acid
+Phosgene
+Thiophene
+Urea
+Pyruvic Acid
+Ethylene oxide
+Phosphoric acid
+Diacetyl
+1,2-Dichloroethene
+Allyl isothiocyanate
+Diketene
+Acrolein
+Malonic Acid
+Uracil
+Caffeine
+Adiponitrile
+Guanine
+Crystal 6
+Proline
+Methionine
+Theobromine
+Adipamide
+Leucine
+Crystal 7
+Phenylalanine
+Fructose
+Thymol
+Arginine
+Octane
+Crystal 8
+Decalin 
+Dichlorodiphenyltrichloroethane
+Tryptophan
+Indigo dye
+1,3,5-Trimethylcyclohexane
+Crystal 9
+Cyclofructose
+Sebacic acid
+Lysine
+Sulfanilamide
