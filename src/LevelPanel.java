@@ -79,6 +79,16 @@ public class LevelPanel extends JPanel {
 			
 		});
 		
+		JButton howToPlay = new JButton("How To Play");
+		howToPlay.setFocusable(false);
+		howToPlay.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				Atomix.howToPlayDialog.setVisible(true);
+			}
+			
+		});
+		
 		JButton about = new JButton("About");
 		about.setFocusable(false);
 		about.addActionListener(new ActionListener() {
@@ -105,9 +115,10 @@ public class LevelPanel extends JPanel {
 		p1.add(redo);
 		p1.setOpaque(false);
 		
-		JPanel p2 = new JPanel(new GridLayout(4, 1, 0, 5));
+		JPanel p2 = new JPanel(new GridLayout(5, 1, 0, 5));
 		p2.add(p1);
 		p2.add(reset);
+		p2.add(howToPlay);
 		p2.add(about);
 		p2.add(exit);
 		p2.setBorder(BorderFactory.createCompoundBorder(new LineBorder(new Color(100, 150, 200), 1), BorderFactory.createEmptyBorder(5, 5, 5, 5)));

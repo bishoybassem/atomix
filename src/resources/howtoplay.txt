@@ -1,0 +1,7 @@
+Move the atoms and align them as the molecule 
+on the right shows. Any moved atom will keep 
+sliding until it hits a wall or another atom.  
+
+After selecting an atom, use the keyboard's 
+arrow keys or click the yellow arrows shown 
+around the atom to move it.

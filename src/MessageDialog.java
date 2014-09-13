@@ -22,19 +22,23 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 @SuppressWarnings("serial")
-public class AboutDialog extends JDialog {
+public class MessageDialog extends JDialog {
 	
 	private static BufferedImage icon;
+	private static String aboutText;
+	private static String howToPlayText;
 	
 	static {
 		try {
-			icon = ImageIO.read(AboutDialog.class.getResource("resources/logo.png"));
+			icon = ImageIO.read(MessageDialog.class.getResource("resources/logo.png"));
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		aboutText = Atomix.readTextFile("resources/about.txt");
+		howToPlayText = Atomix.readTextFile("resources/howtoplay.txt");
 	}
 	
-	public AboutDialog(JFrame main) {
+	public MessageDialog(JFrame main, boolean isAbout) {
 		super(main, "Atomix", true);
 		
 		JTextPane textPane = new JTextPane();
@@ -42,7 +46,7 @@ public class AboutDialog extends JDialog {
 		textPane.setFocusable(false);
 		textPane.setOpaque(false);
 		textPane.setBorder(BorderFactory.createEmptyBorder(0, 15, 10, 15));
-		textPane.setText("Created By\nBishoy Bassem Morris\ngithub.com/bishoybassem");
+		textPane.setText(isAbout ? aboutText : howToPlayText);
 		
 		StyledDocument doc = textPane.getStyledDocument();
 		SimpleAttributeSet center = new SimpleAttributeSet();
@@ -75,7 +79,6 @@ public class AboutDialog extends JDialog {
 		
 		JPanel p2 = new JPanel();
 		p2.setOpaque(false);
-		p2.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
 		p2.add(p1);
 		
 		JPanel p3 = new JPanel();

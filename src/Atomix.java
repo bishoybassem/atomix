@@ -26,7 +26,8 @@ public class Atomix extends JFrame {
 	private LevelPanel currentLevel;
 	
 	static JPanel levelSelectPanel;
-	static AboutDialog aboutDialog;
+	static MessageDialog aboutDialog;
+	static MessageDialog howToPlayDialog;
 	
 	public Atomix() throws URISyntaxException, IOException {
 		super("Atomix");
@@ -97,7 +98,8 @@ public class Atomix extends JFrame {
 		levelSelectPanel.add(next);
 		
 		currentLevel = new LevelPanel(1);
-		aboutDialog = new AboutDialog(this);
+		aboutDialog = new MessageDialog(this, true);
+		howToPlayDialog = new MessageDialog(this, false);
 		
 		setIconImage(new ImageIcon(getClass().getResource("resources/logo.png")).getImage());
 		setResizable(false);
@@ -122,7 +124,7 @@ public class Atomix extends JFrame {
 				sc.close();
 			}
 		}
-		return text;
+		return text.trim();
 	}
 	
 	public static void main(String[] args) throws Exception {
