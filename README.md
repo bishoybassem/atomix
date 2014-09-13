@@ -10,7 +10,7 @@ A standalone Java version of the [KAtomic](https://games.kde.org/game.php?game=k
 
 ### Download
 
-[Version 1.0](https://github.com/bishoybassem/atomix/releases/download/v1.0/Atomix.jar)
+[Version 1.1](https://github.com/bishoybassem/atomix/releases/download/v1.1/Atomix.jar)
 
 ### Screenshots
 
