@@ -32,10 +32,10 @@ public class Atomix extends JFrame {
 	public Atomix() throws URISyntaxException, IOException {
 		super("Atomix");
 		
-		UIManager.put("Button.font", new Font("Comic sans ms", Font.PLAIN, 16));
-		UIManager.put("ComboBox.font", new Font("Comic sans ms", Font.PLAIN, 16));
-		UIManager.put("TextPane.font", new Font("Comic sans ms", Font.PLAIN, 16));
-		UIManager.put("Panel.font", new Font("Comic sans ms", Font.PLAIN, 16));
+		UIManager.put("Button.font", new Font("Comic sans ms", Font.PLAIN, 17));
+		UIManager.put("ComboBox.font", new Font("Comic sans ms", Font.PLAIN, 17));
+		UIManager.put("TextPane.font", new Font("Comic sans ms", Font.PLAIN, 17));
+		UIManager.put("Panel.font", new Font("Comic sans ms", Font.PLAIN, 17));
 		setUndecorated(true);
 		
 		final String[] levelNames = readTextFile("levels/names.txt").split("\n");
@@ -101,7 +101,7 @@ public class Atomix extends JFrame {
 		aboutDialog = new MessageDialog(this, true);
 		howToPlayDialog = new MessageDialog(this, false);
 		
-		setIconImage(new ImageIcon(getClass().getResource("resources/logo.png")).getImage());
+		setIconImage(new ImageIcon(getClass().getResource("resources/logo2.png")).getImage());
 		setResizable(false);
 		add(currentLevel);
 		pack();
