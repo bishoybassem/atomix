@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +15,9 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -128,14 +131,20 @@ public class LevelPanel extends JPanel {
 		p3.setOpaque(false);
 		p3.add(p2);
 		
+		JPanel titlePanel = new JPanel();
+		titlePanel.setOpaque(false);
+		titlePanel.add(new JLabel(new ImageIcon(getClass().getResource("resources/atomix.png"))));
+		
 		JPanel p4 = new JPanel();
 		p4.setOpaque(false);
 		p4.setLayout(new BoxLayout(p4, BoxLayout.PAGE_AXIS));
 		p4.add(solutionPanel);
-		p4.add(Box.createRigidArea(new Dimension(0, 10)));
+		p4.add(Box.createRigidArea(new Dimension(0, 5)));
+		p4.add(titlePanel);
+		p4.add(Box.createRigidArea(new Dimension(0, 5)));
 		p4.add(p3);
-		
-		JPanel p5 = new JPanel(new BorderLayout(0, 0)) {
+
+		JPanel p5 = new JPanel(new GridBagLayout()) {
 			
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -152,8 +161,11 @@ public class LevelPanel extends JPanel {
 				g.drawRect(0, 0, getPreferredSize().width - 1, getPreferredSize().height - 1);
 			}
 			
+			public Dimension getPreferredSize() {
+				return new Dimension(boardPanel.getPreferredSize().width + 40, boardPanel.getPreferredSize().height + 40);
+			}
+			
 		};
-		p5.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		p5.add(boardPanel);
 		
 		JPanel p6 = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
@@ -168,7 +180,7 @@ public class LevelPanel extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
 		setBorder(BorderFactory.createMatteBorder(3, 3, 3, 3, Color.GRAY));
 		add(p7);
-		add(p4);
+		add(p4, BorderLayout.EAST);
 	}
 	
 	private static int[][] toArray(String s) {
