@@ -51,6 +51,8 @@ public class BoardPanel extends JPanel {
 	private int deltaAlpha;
 	private double curAngle;
 	private double deltaAngle;
+	private double curScale;
+	private double deltaScale;
 	
 	private List<int[]> movements;
 	private int moveIndex;
@@ -60,6 +62,7 @@ public class BoardPanel extends JPanel {
 	private boolean fade;
 	private boolean move;
 	private boolean rotate;
+	private boolean jump;
 	private boolean won;
 	private boolean playMoveAC;
 	
@@ -100,6 +103,7 @@ public class BoardPanel extends JPanel {
 		}
 		curRow = 0;
 		curCol = 0;
+		curScale = 1.0;
 		movements = new ArrayList<int[]>();
 		moveIndex = -1;
 		won = false;
@@ -123,10 +127,12 @@ public class BoardPanel extends JPanel {
 					curY = curRow * Element.side;
 					curAngle = 0;
 					curAlpha = 0;
+					curScale = 1.0;
 					animating = false;
 					move = false;
 					fade = false;
 					rotate = false;
+					jump = false;
 					playMoveAC = true;
 					movesPanel.repaint();
 					checkWon();
@@ -134,7 +140,14 @@ public class BoardPanel extends JPanel {
 				} else {
 					if ((finY == curY - 5 || finY == curY + 5 || finX == curX - 5 || finX == curX + 5 || curAlpha == 19) && playMoveAC){
 						moveAC.play();
-					}							
+					}
+					double distance = Math.abs(finX - curX) + Math.abs(finY - curY);
+					double middle = (Math.abs(finRow - curRow) + Math.abs(finCol - curCol)) * Element.side / 2;
+					if (distance > middle) {
+						curScale += deltaScale;
+					} else {
+						curScale -= deltaScale;
+					}
 					curAngle += deltaAngle;
 					curAlpha += deltaAlpha;
 					curX = (finX > curX)? curX + deltaX : (finX < curX)? curX - deltaX : curX;
@@ -311,11 +324,12 @@ public class BoardPanel extends JPanel {
 	private void setAnimationType() {
 		animating = true;
 		Random gen = new Random();		
-		while (!move && !fade) {
+		do {
 			move = gen.nextBoolean();
 			fade = gen.nextBoolean();
-		}
+		} while (!move && !fade);
 		rotate = gen.nextBoolean();
+		jump = fade ? false : gen.nextBoolean();
 	}
 	
 	private void animateMovement() {
@@ -325,6 +339,7 @@ public class BoardPanel extends JPanel {
 		deltaY = move ? 5 : 0;
 		deltaAngle = (!rotate)? 0 : (fade)? Math.PI / 10 : (10 * Math.PI / ((finY - curY) + (finX - curX)));
 		deltaAlpha = (fade)? 1 : 0;
+		deltaScale = jump? 0.02 : 0;
 		animator.start();
 	}
 		
@@ -417,15 +432,27 @@ public class BoardPanel extends JPanel {
 		Composite c = g2d.getComposite();
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (1 - curAlpha * 0.05)));
 		
-		g2d.rotate(curAngle, curX + Element.side / 2, curY + Element.side / 2);
-		g2d.drawImage(elements[board[curRow][curCol]].getImage(), curX, curY, null);
-		g2d.rotate(-curAngle, curX + Element.side / 2, curY + Element.side / 2);
+		g2d.translate(curX + Element.side / 2, curY + Element.side / 2);
+		g2d.rotate(curAngle);
+		//g2d.rotate(curAngle, curX + Element.side / 2, curY + Element.side / 2);
+		g2d.scale(curScale, curScale);
+		g2d.drawImage(elements[board[curRow][curCol]].getImage(), -Element.side / 2, -Element.side / 2, null);
+		g2d.scale(1 / curScale, 1 / curScale);
+		//g2d.rotate(-curAngle, curX + Element.side / 2, curY + Element.side / 2);
+		g2d.rotate(-curAngle);
+		g2d.translate(-curX - Element.side / 2, -curY - Element.side / 2);
 		
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (curAlpha * 0.05)));
 		
-		g2d.rotate(curAngle, finX + Element.side / 2, finY + Element.side / 2);
-		g2d.drawImage(elements[board[curRow][curCol]].getImage(), finX, finY,  null);
-		g2d.rotate(-curAngle, finX + Element.side / 2, finY + Element.side / 2);
+		g2d.translate(finX + Element.side / 2, finY + Element.side / 2);
+		g2d.rotate(curAngle);
+		//g2d.rotate(curAngle, finX + Element.side / 2, finY + Element.side / 2);
+		g2d.scale(curScale, curScale);
+		g2d.drawImage(elements[board[curRow][curCol]].getImage(), -Element.side / 2, -Element.side / 2,  null);
+		g2d.scale(1 / curScale, 1 / curScale);
+		//g2d.rotate(-curAngle, finX + Element.side / 2, finY + Element.side / 2);
+		g2d.rotate(-curAngle);
+		g2d.translate(-finX - Element.side / 2, -finY - Element.side / 2);
 		
 		g2d.setComposite(c);
 		
