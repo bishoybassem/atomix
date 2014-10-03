@@ -23,12 +23,12 @@ import javax.swing.text.StyledDocument;
 @SuppressWarnings("serial")
 public class MessageDialog extends JDialog {
 	
-	private static final String aboutText;
-	private static final String howToPlayText;
+	private static final String ABOUT_TEXT;
+	private static final String HOW_TO_PLAY_TEXT;
 	
 	static {
-		aboutText = Atomix.readTextFile("resources/about.txt");
-		howToPlayText = Atomix.readTextFile("resources/howtoplay.txt");
+		ABOUT_TEXT = Atomix.readTextFile("resources/about.txt");
+		HOW_TO_PLAY_TEXT = Atomix.readTextFile("resources/howtoplay.txt");
 	}
 	
 	public MessageDialog(JFrame main, boolean isAbout) {
@@ -39,7 +39,7 @@ public class MessageDialog extends JDialog {
 		textPane.setFocusable(false);
 		textPane.setOpaque(false);
 		textPane.setBorder(BorderFactory.createEmptyBorder(0, 15, 10, 15));
-		textPane.setText(isAbout ? aboutText : howToPlayText);
+		textPane.setText(isAbout ? ABOUT_TEXT : HOW_TO_PLAY_TEXT);
 		
 		StyledDocument doc = textPane.getStyledDocument();
 		SimpleAttributeSet center = new SimpleAttributeSet();

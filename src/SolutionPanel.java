@@ -17,7 +17,7 @@ public class SolutionPanel extends JPanel {
 	}
 	
 	public Dimension getPreferredSize() {
-		return new Dimension(Element.side * (solution[0].length) + 30, Element.side * (solution.length) + 30);
+		return new Dimension(Element.SIDE * (solution[0].length) + 30, Element.SIDE * (solution.length) + 30);
 	}
 
 	public Dimension getMaximumSize() {
@@ -33,7 +33,7 @@ public class SolutionPanel extends JPanel {
 		for (int i = 0; i < solution.length; i++) {
 			for (int j = 0; j < solution[0].length; j++) {
 				if (solution[i][j] != 0) {
-					g.drawImage((elements[solution[i][j]]).getImage(), j * Element.side + 15, i * Element.side + 15, null);
+					g.drawImage((elements[solution[i][j]]).getImage(), j * Element.SIDE + 15, i * Element.SIDE + 15, null);
 				}
 			}
 		}

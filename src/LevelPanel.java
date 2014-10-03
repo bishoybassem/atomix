@@ -151,10 +151,10 @@ public class LevelPanel extends JPanel {
 				g.setColor(Color.WHITE);
 				g.fillRect(0, 0, getPreferredSize().width, getPreferredSize().height);
 				g.setColor(new Color(220, 220, 220));
-				for (int i = 20; i <= getPreferredSize().height; i += Element.side) {
+				for (int i = 20; i <= getPreferredSize().height; i += Element.SIDE) {
 					g.drawLine(0, i, getPreferredSize().width, i);
 				}
-				for (int j = 20; j <= getPreferredSize().width; j += Element.side) {
+				for (int j = 20; j <= getPreferredSize().width; j += Element.SIDE) {
 					g.drawLine(j, 0, j, getPreferredSize().height);
 				}
 				g.setColor(new Color(100, 150, 200));

@@ -123,8 +123,8 @@ public class BoardPanel extends JPanel {
 					board[curRow][curCol] = x;
 					curRow = finRow;
 					curCol = finCol;
-					curX = curCol * Element.side;
-					curY = curRow * Element.side;
+					curX = curCol * Element.SIDE;
+					curY = curRow * Element.SIDE;
 					curAngle = 0;
 					curAlpha = 0;
 					curScale = 1.0;
@@ -143,7 +143,7 @@ public class BoardPanel extends JPanel {
 						playMoveAC = false;
 					}
 					double distance = Math.abs(finX - curX) + Math.abs(finY - curY);
-					double middle = (Math.abs(finRow - curRow) + Math.abs(finCol - curCol)) * Element.side / 2;
+					double middle = (Math.abs(finRow - curRow) + Math.abs(finCol - curCol)) * Element.SIDE / 2;
 					if (distance > middle) {
 						curScale += deltaScale;
 					} else {
@@ -215,14 +215,14 @@ public class BoardPanel extends JPanel {
 				if (animating || won) {
 					return;
 				}
-				int c = e.getX() / Element.side;
-				int r = e.getY() / Element.side;
+				int c = e.getX() / Element.SIDE;
+				int r = e.getY() / Element.SIDE;
 				if (r >= 0 && r < board.length && c >= 0 && c < board[0].length) {
 					if (board[r][c] > 0) {
 						curRow = r;
 						curCol = c;
-						curX = curCol * Element.side;
-						curY = curRow * Element.side;
+						curX = curCol * Element.SIDE;
+						curY = curRow * Element.SIDE;
 						finRow = r;
 						finCol = c;
 						drawAtoms();
@@ -253,13 +253,13 @@ public class BoardPanel extends JPanel {
 				if (areEqual(i, j)) {
 					Graphics2D g2d = (Graphics2D)getGraphics();
 					
-					Rectangle2D rect = new Rectangle2D.Double(1, (getPreferredSize().height - 3 * Element.side) / 2.0, getPreferredSize().width - 2, 3 * Element.side);
+					Rectangle2D rect = new Rectangle2D.Double(1, (getPreferredSize().height - 3 * Element.SIDE) / 2.0, getPreferredSize().width - 2, 3 * Element.SIDE);
 			        g2d.setPaint(new GradientPaint(0, 0, new Color(245, 248, 251), getPreferredSize().width, 0, new Color(221, 232, 242)));
 			        g2d.fill(rect);
 					g2d.setColor(new Color(100, 150, 200));
 					g2d.draw(rect);
 
-					g2d.setFont(new Font("Comic sans ms", Font.PLAIN, Element.side));
+					g2d.setFont(new Font("Comic sans ms", Font.PLAIN, Element.SIDE));
 					FontMetrics fm = g2d.getFontMetrics();
 			        Rectangle2D r = fm.getStringBounds("YOU WIN!", g2d);
 			        int x = (int) ((getPreferredSize().width - r.getWidth()) / 2);
@@ -334,8 +334,8 @@ public class BoardPanel extends JPanel {
 	}
 	
 	private void animateMovement() {
-		finX = finCol * Element.side;
-		finY = finRow * Element.side;
+		finX = finCol * Element.SIDE;
+		finY = finRow * Element.SIDE;
 		deltaX = move ? 5 : 0;
 		deltaY = move ? 5 : 0;
 		deltaAngle = (!rotate)? 0 : (fade)? Math.PI / 10 : (10 * Math.PI / ((finY - curY) + (finX - curX)));
@@ -367,8 +367,8 @@ public class BoardPanel extends JPanel {
 				finRow = positions[2];
 				finCol = positions[3];
 			}
-			curX = curCol * Element.side;
-			curY = curRow * Element.side;
+			curX = curCol * Element.SIDE;
+			curY = curRow * Element.SIDE;
 			drawAtoms();
 			animating = true;
 			fade = true;
@@ -386,26 +386,26 @@ public class BoardPanel extends JPanel {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
 				if (board[i][j] == -1) {
-					g.drawImage(Element.wall, j * Element.side, i * Element.side, null);
+					g.drawImage(Element.WALL, j * Element.SIDE, i * Element.SIDE, null);
 				}
 			}
 		}
 		g.setColor(new Color(220, 220, 220));
 		for (int i = 0; i <= board.length; i++) {
-			g.drawLine(0, i * Element.side, getPreferredSize().width, i * Element.side);
+			g.drawLine(0, i * Element.SIDE, getPreferredSize().width, i * Element.SIDE);
 		}
 		for (int j = 0; j <= board[0].length; j++) {
-			g.drawLine(j * Element.side, 0, j * Element.side, getPreferredSize().height);
+			g.drawLine(j * Element.SIDE, 0, j * Element.SIDE, getPreferredSize().height);
 		}
 	}
 	
 	public void drawAtoms() {
-		atoms = new BufferedImage(Element.side * (board[0].length + 1), Element.side * (board.length + 1), BufferedImage.TYPE_INT_ARGB);
+		atoms = new BufferedImage(Element.SIDE * (board[0].length + 1), Element.SIDE * (board.length + 1), BufferedImage.TYPE_INT_ARGB);
 		Graphics g = atoms.getGraphics();
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
 				if (board[i][j] > 0 && !(i == curRow && j == curCol)) {
-					g.drawImage(elements[board[i][j]].getImage(), j * Element.side, i * Element.side, null);
+					g.drawImage(elements[board[i][j]].getImage(), j * Element.SIDE, i * Element.SIDE, null);
 				}
 			}
 		}
@@ -416,7 +416,7 @@ public class BoardPanel extends JPanel {
 	}
 	
 	public Dimension getPreferredSize() {
-		return new Dimension(Element.side * board[0].length, Element.side * board.length);
+		return new Dimension(Element.SIDE * board[0].length, Element.SIDE * board.length);
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -433,42 +433,42 @@ public class BoardPanel extends JPanel {
 		Composite c = g2d.getComposite();
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (1 - curAlpha * 0.05)));
 		
-		g2d.translate(curX + Element.side / 2, curY + Element.side / 2);
+		g2d.translate(curX + Element.SIDE / 2, curY + Element.SIDE / 2);
 		g2d.rotate(curAngle);
 		//g2d.rotate(curAngle, curX + Element.side / 2, curY + Element.side / 2);
 		g2d.scale(curScale, curScale);
-		g2d.drawImage(elements[board[curRow][curCol]].getImage(), -Element.side / 2, -Element.side / 2, null);
+		g2d.drawImage(elements[board[curRow][curCol]].getImage(), -Element.SIDE / 2, -Element.SIDE / 2, null);
 		g2d.scale(1 / curScale, 1 / curScale);
 		//g2d.rotate(-curAngle, curX + Element.side / 2, curY + Element.side / 2);
 		g2d.rotate(-curAngle);
-		g2d.translate(-curX - Element.side / 2, -curY - Element.side / 2);
+		g2d.translate(-curX - Element.SIDE / 2, -curY - Element.SIDE / 2);
 		
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) (curAlpha * 0.05)));
 		
-		g2d.translate(finX + Element.side / 2, finY + Element.side / 2);
+		g2d.translate(finX + Element.SIDE / 2, finY + Element.SIDE / 2);
 		g2d.rotate(curAngle);
 		//g2d.rotate(curAngle, finX + Element.side / 2, finY + Element.side / 2);
 		g2d.scale(curScale, curScale);
-		g2d.drawImage(elements[board[curRow][curCol]].getImage(), -Element.side / 2, -Element.side / 2,  null);
+		g2d.drawImage(elements[board[curRow][curCol]].getImage(), -Element.SIDE / 2, -Element.SIDE / 2,  null);
 		g2d.scale(1 / curScale, 1 / curScale);
 		//g2d.rotate(-curAngle, finX + Element.side / 2, finY + Element.side / 2);
 		g2d.rotate(-curAngle);
-		g2d.translate(-finX - Element.side / 2, -finY - Element.side / 2);
+		g2d.translate(-finX - Element.SIDE / 2, -finY - Element.SIDE / 2);
 		
 		g2d.setComposite(c);
 		
 		if (!animating && !won) {
 			if (board[curRow - 1][curCol] == 0) {
-				g2d.drawImage(Element.arrowDown, curCol * Element.side, (curRow - 1) * Element.side, null);
+				g2d.drawImage(Element.ARROW_DOWN, curCol * Element.SIDE, (curRow - 1) * Element.SIDE, null);
 			}
 			if (board[curRow + 1][curCol] == 0) {
-				g2d.drawImage(Element.arrowUp, curCol * Element.side, (curRow + 1) * Element.side, null);
+				g2d.drawImage(Element.ARROW_UP, curCol * Element.SIDE, (curRow + 1) * Element.SIDE, null);
 			}
 			if (board[curRow][curCol - 1] == 0) {
-				g2d.drawImage(Element.arrowLeft, (curCol - 1) * Element.side, curRow * Element.side, null);
+				g2d.drawImage(Element.ARROW_LEFT, (curCol - 1) * Element.SIDE, curRow * Element.SIDE, null);
 			}
 			if (board[curRow][curCol + 1] == 0) {
-				g2d.drawImage(Element.arrowRight, (curCol + 1) * Element.side, curRow * Element.side, null);
+				g2d.drawImage(Element.ARROW_RIGHT, (curCol + 1) * Element.SIDE, curRow * Element.SIDE, null);
 			}
 		}
 	}
