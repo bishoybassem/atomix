@@ -140,6 +140,7 @@ public class BoardPanel extends JPanel {
 				} else {
 					if ((finY == curY - 5 || finY == curY + 5 || finX == curX - 5 || finX == curX + 5 || curAlpha == 19) && playMoveAC){
 						moveAC.play();
+						playMoveAC = false;
 					}
 					double distance = Math.abs(finX - curX) + Math.abs(finY - curY);
 					double middle = (Math.abs(finRow - curRow) + Math.abs(finCol - curCol)) * Element.side / 2;
